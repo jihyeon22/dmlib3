@@ -512,7 +512,7 @@ char status;
 	fprintf(log_fd, "%s	= %s\n", "DTG_UPD_STAT", getenv("DTG_UPD_STAT"));
 
 	// simulator code
-	system("/system/sbin/dlpkg");
+	system("/system/sbin/dlpkg3");
 	printf("Waiting 5sec... before run dm\n");
 	sleep(5);
 	system("/system/bin/dm");

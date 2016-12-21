@@ -69,8 +69,8 @@ create_system() {
 	cp -ar w200fs/system temp
 	echo "Copy simulinit..."
 	cp build/simulinit temp/system/sbin
-	echo "Copy dlpkg..."
-	cp build/dlpkg temp/system/sbin
+	echo "Copy dlpkg3..."
+	cp build/dlpkg3 temp/system/sbin
 	echo "UP_VER: $CORPMODEL-$SERVMODEL-$DEVMODEL-$LOWERVER" > temp/system/$LOWERVER/PACKAGE
 	ln -sf /system/sbin/simulinit temp/system/simulinit
 	ln -sf /system/$LOWERVER temp/system/bin
