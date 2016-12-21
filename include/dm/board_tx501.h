@@ -1,18 +1,21 @@
 #pragma once
 
-#define DM_INI					"/data/mds/system/bin/dm.ini"
-#define DM_SERVICE_PACKAGE		"/data/mds/system/bin/PACKAGE"
+#define CONCAT_STR(X, Y)		X Y
+#define SYSTEM_DIR				"/system/mds/system"
 
-#define CMD_POWER_OFF			"poweroff"
+#define DM_INI					CONCAT_STR(SYSTEM_DIR, "/bin/dm.ini")
+#define DM_SERVICE_PACKAGE		CONCAT_STR(SYSTEM_DIR, "/bin/PACKAGE")
 
-#define SVRFTP					"/data/mds/system/UPDATE/svrftp.ini"
-#define FTPSCRIPT				"/data/mds/system/UPDATE/ftp_script.sh"
 
-#define UPDATE_DIR				"/data/mds/system/UPDATE"
+#define SVRFTP					CONCAT_STR(SYSTEM_DIR, "/UPDATE/svrftp.ini")
+#define FTPSCRIPT				CONCAT_STR(SYSTEM_DIR, "/UPDATE/ftp_script.sh")
 
-#define TREE_ROOT				"/data/mds/system"
-#define DIR_NEW_PKG				"/data/mds/system/NEW"
+#define UPDATE_DIR				CONCAT_STR(SYSTEM_DIR, "/UPDATE")
 
+#define TREE_ROOT				SYSTEM_DIR
+#define DIR_NEW_PKG				CONCAT_STR(SYSTEM_DIR, "/NEW")
+
+#define CMD_POWER_OFF			"poweroff &"
 
 #define STEP_DEBUG_MDOE_1		"echo 1 > /tmp/stat"
 #define STEP_DEBUG_MDOE_2		"echo 2 > /tmp/stat"

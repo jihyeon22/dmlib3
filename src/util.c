@@ -34,7 +34,7 @@ char* dm_get_hw_version(void)
 
 	// read from /etc/btime
 	//   # cat /etc/btime
-	//   TX500S:
+	//   TX501S:
 	//   Fri Oct 21 14:09:29 KST 2016
 	_hw_version = calloc(20, sizeof(char));
 	{

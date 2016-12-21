@@ -1,4 +1,5 @@
 src/version.c
+src/version.c
 *.o
 build/
 *.a
