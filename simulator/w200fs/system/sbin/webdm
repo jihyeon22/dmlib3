@@ -1,0 +1,2 @@
+#!/bin/sh
+echo -e "\n>>>>>>>>>>webdm $1 SIMULATOR<<<<<<<<<<\n"

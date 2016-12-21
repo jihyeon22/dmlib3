@@ -1,0 +1,92 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AT_DEV_FILE	at.h	1;"	d
+AT_LEN_PHONENUM	at.h	4;"	d
+AT_LEN_PHONENUM_BUFF	at.h	5;"	d
+AT_MAX_BUFF_SIZE	at.h	2;"	d
+AT_MAX_RETRY_WRITE	at.h	7;"	d
+AT_MAX_WAIT_READ_SEC	at.h	8;"	d
+FTPSCRIPT	update_api.c	15;"	d	file:
+FTP_SERVER	update_api.h	/^struct FTP_SERVER {$/;"	s
+FTP_SERVER	update_api.h	/^typedef struct FTP_SERVER FTP_SERVER;$/;"	t	typeref:struct:FTP_SERVER
+GPIO_NO_MAX	gpio.h	5;"	d
+GPIO_NO_MIN	gpio.h	4;"	d
+GPIO_SRC_NUM_IGNITION	gpio.h	7;"	d
+GPIO_SRC_NUM_POWER	gpio.h	6;"	d
+RETRY_COUNT	common.h	5;"	d
+RETRY_OPEN_FILE	file_check.c	9;"	d	file:
+RETRY_SECS	common.h	4;"	d
+SYSLOG_ADDR	syslog_api.h	15;"	d
+SYSLOG_PORT	syslog_api.h	17;"	d
+UPDATE_DIR	update_api.c	14;"	d	file:
+UPDATE_FAILURE	update_api.h	16;"	d
+UPDATE_SUCCESS	update_api.h	15;"	d
+__DL_COMMON_H__	common.h	2;"	d
+__DL_FTP_LIST_H__	ftp_list.h	2;"	d
+__DL_GPIO_H__	gpio.h	2;"	d
+__DL_LIB_CHECK_H__	file_check.h	2;"	d
+__DL_PACK_LIST_H__	pack_list.h	2;"	d
+__DL_SYSLOG_API_H__	syslog_api.h	2;"	d
+__DL_UPDATE_API_H__	update_api.h	2;"	d
+__DL_UPDATE_H__	update.h	2;"	d
+__DL_UTIL_H__	util.h	2;"	d
+_valid_gpio	gpio.c	/^static int _valid_gpio(const int gpio)$/;"	f	file:
+_wait_read	at_w200.c	/^static int _wait_read(int fd, unsigned char *buf, int buf_len, int ftime)$/;"	f	file:
+_wait_read	at_w200k.c	/^static int _wait_read(int fd, unsigned char *buf, int buf_len, int ftime)$/;"	f	file:
+addr	ftp_list.h	/^	char *addr;$/;"	m	struct:ftp_server_info
+addr	update_api.h	/^	char addr[256];$/;"	m	struct:FTP_SERVER
+at_get_phonenum	at_simulator.c	/^int at_get_phonenum(char *pnumver, int buf_len)$/;"	f
+at_get_phonenum	at_w200.c	/^int at_get_phonenum(char *pnumber, int buf_len)$/;"	f
+at_get_phonenum	at_w200k.c	/^int at_get_phonenum(char *pnumber, int buf_len)$/;"	f
+check_file	file_check.c	/^int check_file(fileInfo_t file_info)$/;"	f
+check_package	file_check.c	/^int check_package(packageInfo_t pack_info)$/;"	f
+cmd_temp	update_api.c	/^static 	char cmd_temp[255] = {0};$/;"	v	file:
+deinit_syslog	syslog_api.c	/^int deinit_syslog(void)$/;"	f
+del_dir	util.c	/^int del_dir(char* path)$/;"	f
+del_temp_dir	update_api.c	/^int del_temp_dir()$/;"	f
+download_run_script	update_api.c	/^int download_run_script(FTP_SERVER *svr)$/;"	f
+download_size_get	update_api.c	/^int download_size_get(char *download_file)$/;"	f
+eGpioInput	gpio.h	/^	eGpioInput = 0,$/;"	e	enum:gpioDirection
+eGpioOutput	gpio.h	/^	eGpioOutput$/;"	e	enum:gpioDirection
+extract_gz	update_api.c	/^int extract_gz(char *source, char *target)$/;"	f
+file	update_api.h	/^	char file[255];$/;"	m	struct:FTP_SERVER
+fileInfo	file_check.h	/^struct fileInfo$/;"	s
+fileInfo_t	file_check.h	/^typedef struct fileInfo fileInfo_t;$/;"	t	typeref:struct:fileInfo
+ftp_server_check	update_api.c	/^int ftp_server_check(FTP_SERVER *svr, int timeout) {$/;"	f
+ftp_server_info	ftp_list.h	/^struct ftp_server_info$/;"	s
+ftp_server_info_t	ftp_list.h	/^typedef struct ftp_server_info ftp_server_info_t;$/;"	t	typeref:struct:ftp_server_info
+ftp_table	ftp_list.c	/^ftp_server_info_t ftp_table[] =$/;"	v
+ftpsvr_download	update_api.c	/^int  ftpsvr_download(FTP_SERVER *svr_info)$/;"	f
+gPN	at_w200.c	/^static char gPN[AT_LEN_PHONENUM_BUFF] = {0,};$/;"	v	file:
+gPN	at_w200k.c	/^static char gPN[AT_LEN_PHONENUM_BUFF] = {0,};$/;"	v	file:
+gpioDirection	gpio.h	/^enum gpioDirection$/;"	g
+gpioDirection_t	gpio.h	/^typedef enum gpioDirection gpioDirection_t;$/;"	t	typeref:enum:gpioDirection
+gpio_get_value	gpio.c	/^int gpio_get_value(const int gpio)$/;"	f
+gpio_set_direction	gpio.c	/^int gpio_set_direction(const int gpio, gpioDirection_t direction)$/;"	f
+gpio_set_value	gpio.c	/^int gpio_set_value(const int gpio, const int value)$/;"	f
+id	ftp_list.h	/^	char *id;$/;"	m	struct:ftp_server_info
+id	update_api.h	/^	char id[16];$/;"	m	struct:FTP_SERVER
+init_syslog	syslog_api.c	/^int init_syslog(void)$/;"	f
+localFiles	file_check.h	/^	fileInfo_t localFiles[30];$/;"	m	struct:packageInfo
+localPath	file_check.h	/^	char *localPath;$/;"	m	struct:fileInfo
+main	main.c	/^int main(int argc, char** argv)$/;"	f
+md5check	update_api.c	/^int md5check(FTP_SERVER * svr)$/;"	f
+md5read	update_api.c	/^int  md5read(char *file_name, char* md5data){$/;"	f
+norifier_end	main.c	/^void norifier_end()$/;"	f
+packageInfo	file_check.h	/^struct packageInfo$/;"	s
+packageInfo_t	file_check.h	/^typedef struct packageInfo packageInfo_t;$/;"	t	typeref:struct:packageInfo
+package_list	pack_list.c	/^packageInfo_t package_list[] =$/;"	v
+pass	ftp_list.h	/^	char *pass;$/;"	m	struct:ftp_server_info
+pass	update_api.h	/^	char pass[16];$/;"	m	struct:FTP_SERVER
+port	ftp_list.h	/^	int  port;$/;"	m	struct:ftp_server_info
+port	update_api.h	/^	int  port;$/;"	m	struct:FTP_SERVER
+poweroff	main.c	/^void poweroff()$/;"	f
+remotePath	file_check.h	/^	char *remotePath;$/;"	m	struct:packageInfo
+size	file_check.h	/^	int size;$/;"	m	struct:fileInfo
+update_ftp_download	update.c	/^update_ftp_download(const char *file, char *target)$/;"	f
+update_md5	update_api.h	/^	char update_md5[64];$/;"	m	struct:FTP_SERVER
+update_ver	update_api.h	/^	char update_ver[64];$/;"	m	struct:FTP_SERVER

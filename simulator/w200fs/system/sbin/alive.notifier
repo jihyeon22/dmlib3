@@ -1,0 +1,2 @@
+#!/bin/sh
+echo -e "\n>>>>>>>>>>alive.notifier $1 SIMULATOR<<<<<<<<<<\n"

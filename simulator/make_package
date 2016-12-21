@@ -1,0 +1,115 @@
+#1/bin/bash
+DESTDIR=PACKAGE
+OUTDIR=temp/PACKAGE
+DATE=`date +%H%M%S`
+
+corp_input() {
+        echo -e "Coporation = (mds) "
+        read CORPMODEL
+}
+
+version_check() {
+  if [ -z $VER ]; then
+  	VER=00.01
+  fi
+}
+
+version_input() {
+	echo -e "Version = (default 00.01)"
+	read VER
+	version_check
+}
+
+model_input() {
+	echo -e "Device Model = (w100, w200, w200k) "
+	read DEVMODEL
+}
+
+server_input() {
+	echo -e "Server Model = (cip-rmc, mds, lotte, bootstrap) "
+	read SERVMODEL
+}
+
+make_package() {
+	echo "$CORPMODEL-$SERVMODEL-$DEVMODEL-$VER 업데이트 패키지 이미지 생성중입니다."
+	echo $OUTDIR
+	if [ ! -d $DESTDIR/system ]; then mkdir -p $DESTDIR/system
+	fi
+
+	cp $OUTDIR/system/NEW $DESTDIR/system -a
+	cd $DESTDIR/system/NEW
+
+	ls | xargs -I {} -t sh -c "md5sum {} > {}.md5"
+	cd ../..
+	tar -czf PACKAGE.$CORPMODEL-$SERVMODEL-$DEVMODEL-$VER.tgz system
+	md5sum PACKAGE.$CORPMODEL-$SERVMODEL-$DEVMODEL-$VER.tgz > PACKAGE.$CORPMODEL-$SERVMODEL-$DEVMODEL-$VER.tgz.md5
+	rm -vrf system/*
+	cd ..
+	echo "패키지 파일 생성이 완료되었습니다."
+}
+
+create_system() {
+	rm -rf system
+	LOWERVER=$(echo | awk -v x=$VER 'BEGIN{printf "%.0f", (x - 0.01) * 100}')
+	echo $LOWERVER
+	if [ $LOWERVER -ge 1000 ]; then
+		UPPER=
+	else
+		UPPER=0
+	fi
+	LOWERVER=$(echo | awk -v x=$VER 'BEGIN{printf "%.2f", x - 0.01}')
+	LOWERVER=$UPPER$LOWERVER
+	
+	echo "CREATE SYSTEM $LOWERVER"
+	rm -rf temp
+	mkdir -p temp/system/$LOWERVER
+	echo "Copy DM simulator..."
+	cp build/dm.ini temp/system/$LOWERVER
+	cp build/dm temp/system/$LOWERVER
+	cp -ar w200fs/system temp
+	echo "Copy simulinit..."
+	cp build/simulinit temp/system/sbin
+	echo "Copy dlpkg..."
+	cp build/dlpkg temp/system/sbin
+	echo "UP_VER: $CORPMODEL-$SERVMODEL-$DEVMODEL-$LOWERVER" > temp/system/$LOWERVER/PACKAGE
+	ln -sf /system/sbin/simulinit temp/system/simulinit
+	ln -sf /system/$LOWERVER temp/system/bin
+
+	echo "CREATE SIMULATOR ROOTFS"
+	rm -rf temp/rootfs_x86_64
+	tar -xzf w200fs/rootfs_x86_64.tar.gz -C temp
+	cp -ar temp/system temp/rootfs_x86_64
+	ls -al temp/rootfs_x86_64/system
+	cat temp/rootfs_x86_64/system/$LOWERVER/PACKAGE
+}
+create_package_system() {
+	echo "CREATE PACKAGE SYSTEM $VER"
+	rm -rf $OUTDIR
+	mkdir -p $OUTDIR/system/$VER
+	cp build/dm.ini $OUTDIR/system/$VER
+	cp build/dm $OUTDIR/system/$VER
+	echo "UP_VER: $CORPMODEL-$SERVMODEL-$DEVMODEL-$VER" > $OUTDIR/system/$VER/PACKAGE
+	mv $OUTDIR/system/$VER $OUTDIR/system/NEW
+}
+	
+
+do_make_package() {
+	corp_input
+	version_input
+	model_input
+	server_input
+	create_system
+	create_package_system
+	make_package
+}
+
+echo "SIMULATOR Package...."
+echo "DESTDIR=$DESTDIR"
+if [ -d $DESTDIR ]; then mv $DESTDIR $DESTDIR.$DATE 
+fi
+do_make_package
+rm -vrf $DESTDIR/system
+tree $DESTDIR
+
+
+
