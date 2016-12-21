@@ -1,0 +1,5 @@
+src/version.c
+*.o
+build/
+*.a
+libs/
