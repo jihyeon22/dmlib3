@@ -74,17 +74,17 @@ char* dm_get_hw_version(void)
 			if (strncmp(_hw_version, "TX500S", strlen(_hw_version)) == 0)
 			{
 				memset(_hw_version, 0x00, 20);
-				strcpy(_hw_version, "TX501S")
+				strcpy(_hw_version, "TX501S");
 			}
 		   	else if (strncmp(_hw_version, "TX500K", strlen(_hw_version)) == 0)
 			{
 				memset(_hw_version, 0x00, 20);
-				strcpy(_hw_version, "TX501K")
+				strcpy(_hw_version, "TX501K");
 			} 
 			else if (strncmp(_hw_version, "TX500L", strlen(_hw_version)) == 0)
 			{
 				memset(_hw_version, 0x00, 20);
-				strcpy(_hw_version, "TX501L")
+				strcpy(_hw_version, "TX501L");
 			}
 		}
 		else
