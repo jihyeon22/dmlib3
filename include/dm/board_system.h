@@ -12,3 +12,7 @@
 #include "board_tx501.h"
 #endif
 
+#ifdef BOARD_TL500S
+#include "board_tx501.h"
+#endif
+
