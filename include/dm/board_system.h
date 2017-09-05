@@ -20,3 +20,7 @@
 #ifdef BOARD_TL500K
 #include "board_tx501.h"
 #endif
+
+#ifdef BOARD_TL500L
+#include "board_tx501.h"
+#endif
