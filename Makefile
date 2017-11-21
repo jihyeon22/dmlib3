@@ -38,7 +38,9 @@ LIBS += -Llibs/zlib -lz
 INCS += -Ilibs/jansson/src
 LIBS += -Llibs/jansson/src/.libs -ljansson
 INCS += -Ilibs/curl/include
-LIBS += -Llibs/curl/lib/.libs -lcurl
+LIBS += -Llibs/curl/lib/.libs -lcurl 
+INCS += -Ilibs/openssl/include
+LIBS += -Llibs/openssl/usr/lib/ -lssl -lcrypto
 else
 LIBS += -ljansson -lcurl
 endif
@@ -59,6 +61,8 @@ all-before:
 		ln -sf ../../../external/curl-7.30.0 libs/curl; fi
 	@if [ ! -d libs/jansson ]; then \
 		ln -sf ../../../external/jansson-2.7 libs/jansson; fi
+	@if [ ! -d libs/openssl ]; then \
+		ln -sf ../../../external/prebuilt-openssl-tl500 libs/openssl; fi
 	mkdir -p build/dm_gcc
 
 libs:
