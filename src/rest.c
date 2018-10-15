@@ -38,11 +38,16 @@ const char* dm_get_base_url(dm_session* dms) {
 }
 
 dm_res dm_set_timeout(dm_session* dms, int timeout) {
-    if(dms && timeout >= 0) {
+    if(dms && timeout > 0) {
         dms->timeout = timeout ? timeout : DM_TIMEOUT;
         return DM_OK;
     }
-    
+
+    if(dms && timeout == 0) {
+        dms->timeout = 0;
+        return DM_OK;
+    }
+
 	return DM_FAIL;
 }
 

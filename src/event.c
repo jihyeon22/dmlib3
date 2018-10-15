@@ -115,8 +115,15 @@ dm_evres dm_event(const char *event, unsigned long long evo, const char *log, in
 	if (dm_set_base_url(dms, dmi->session.url) == DM_FAIL)
 		return DM_ERR_INTERNAL_ERROR;
 
-	if (dm_set_timeout(dms, dmi->session.timeout) == DM_FAIL)
-		return DM_ERR_INTERNAL_ERROR;
+    // log event is not setting timeout.
+    if ( strcmp(DM_EVENT_LOG, event) == 0 )
+    {
+        dmi->session.timeout = 0;
+        printf("[dmlib] %s : dm log timeout val set to zero\n", __func__);
+    }
+
+    if (dm_set_timeout(dms, dmi->session.timeout) == DM_FAIL)
+        return DM_ERR_INTERNAL_ERROR;
 
 	/* json request */
 	res = dm_enroll_event_json(dms, event, obj, &jres);
